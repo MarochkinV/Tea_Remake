@@ -1,1 +1,51 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'animate.css/animate.min.css';
+
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+}
+
+/*///Стили для стрелок аккордеона*/
+.custom-icon {
+  background-image: url('/assets/images/arrow_down_accordion.png') !important;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.custom-icon-active {
+  background-image: url('/assets/images/arrow_up_accordion.png') !important;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.ui-icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* Позиционирование иконки в правом углу */
+.ui-accordion .ui-accordion-header {
+  position: relative;
+  padding-right: 30px;
+}
+
+.ui-accordion .ui-accordion-header .ui-icon {
+  position: absolute;
+  right: 25px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/*Отключение анимации на мобильных устройствах*/
+@media (max-width: 767.98px) {
+  .animate__animated {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+}
+

@@ -1,0 +1,111 @@
+<div *ngIf="!isSuccess">
+  <form (ngSubmit)="onSubmit()" [formGroup]="orderForm"
+        class="row g-3 col-12 col-lg-6 mx-auto mt-4 mb-5 animate__animated wow animate__rollIn"
+        id="orderForm">
+
+    <div class="row justify-content-center">
+      <div class="col-12 text-center">
+        <h2 class="fw-bold mb-5">Сделать заказ</h2>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label" for="inputName">Имя *</label>
+      <input [ngClass]="{'is-invalid': isSubmitted && f['name'].errors}" class="form-control" formControlName="name" id="inputName"
+             type="text">
+      <div *ngIf="isSubmitted && f['name'].errors" class="invalid-feedback">
+        <div *ngIf="f['name'].errors?.['required']">Имя обязательно</div>
+        <div *ngIf="f['name'].errors?.['minlength']">Минимум 2 символа</div>
+        <div *ngIf="f['name'].errors?.['onlyLetters']">Только буквы и дефис</div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label" for="inputSurname">Фамилия *</label>
+      <input [ngClass]="{'is-invalid': isSubmitted && f['last_name'].errors}" class="form-control" formControlName="last_name" id="inputSurname"
+             type="text">
+      <div *ngIf="isSubmitted && f['last_name'].errors" class="invalid-feedback">
+        <div *ngIf="f['last_name'].errors?.['required']">Фамилия обязательна</div>
+        <div *ngIf="f['last_name'].errors?.['minlength']">Минимум 2 символа</div>
+        <div *ngIf="f['last_name'].errors?.['onlyLetters']">Только буквы и дефис</div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label" for="inputPhone">Телефон *</label>
+      <input [ngClass]="{'is-invalid': isSubmitted && f['phone'].errors}" class="form-control" formControlName="phone" id="inputPhone"
+             type="text">
+      <div *ngIf="isSubmitted && f['phone'].errors" class="invalid-feedback">
+        <div *ngIf="f['phone'].errors?.['required']">Телефон обязателен</div>
+        <div *ngIf="f['phone'].errors?.['invalidPhoneChars']">Только цифры и знак +</div>
+        <div *ngIf="f['phone'].errors?.['invalidPhoneLength']">Должно быть ровно 11 цифр</div>
+        <div *ngIf="f['phone'].errors?.['invalidPlusPosition']">Знак + может быть только в начале</div>
+        <div *ngIf="f['phone'].errors?.['multiplePlus']">Может быть только один знак +</div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label" for="inputCountry">Страна *</label>
+      <input [ngClass]="{'is-invalid': isSubmitted && f['country'].errors}" class="form-control" formControlName="country" id="inputCountry"
+             type="text">
+      <div *ngIf="isSubmitted && f['country'].errors" class="invalid-feedback">
+        <div *ngIf="f['country'].errors?.['required']">Страна обязательна</div>
+        <div *ngIf="f['country'].errors?.['minlength']">Минимум 2 символа</div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label" for="inputIndex">Индекс *</label>
+      <input [ngClass]="{'is-invalid': isSubmitted && f['zip'].errors}" class="form-control" formControlName="zip" id="inputIndex"
+             type="text">
+      <div *ngIf="isSubmitted && f['zip'].errors" class="invalid-feedback">
+        <div *ngIf="f['zip'].errors?.['required']">Индекс обязателен</div>
+        <div *ngIf="f['zip'].errors?.['pattern']">6 цифр</div>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <label class="form-label" for="inputAddress">Адрес *</label>
+      <input [ngClass]="{'is-invalid': isSubmitted && f['address'].errors}" class="form-control" formControlName="address" id="inputAddress"
+             type="text">
+      <div *ngIf="isSubmitted && f['address'].errors" class="invalid-feedback">
+        <div *ngIf="f['address'].errors?.['required']">Адрес обязателен</div>
+        <div *ngIf="f['address'].errors?.['minlength']">Минимум 5 символов</div>
+        <div *ngIf="f['address'].errors?.['invalidAddress']">Только буквы, цифры, пробелы, дефис и слеш</div>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <label class="form-label" for="inputProduct">Товар *</label>
+      <input [ngClass]="{'is-invalid': isSubmitted && f['product'].errors}" class="form-control" formControlName="product" id="inputProduct" readonly
+             type="text">
+      <div *ngIf="isSubmitted && f['product'].errors" class="invalid-feedback">
+        <div *ngIf="f['product'].errors?.['required']">Товар обязателен</div>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <label class="form-label" for="inputComment">Комментарий к заказу</label>
+      <textarea class="form-control" formControlName="comment" id="inputComment" rows="3"></textarea>
+    </div>
+
+    <div class="col-12 mt-4">
+      <button [disabled]="isLoading" class="btn btn-primary px-4" type="submit">
+        <span *ngIf="!isLoading">Отправить</span>
+        <span *ngIf="isLoading">Отправка...</span>
+      </button>
+
+      <div *ngIf="errorMessage" class="mt-2 text-danger">
+        {{ errorMessage }}
+      </div>
+    </div>
+  </form>
+</div>
+
+
+<div *ngIf="isSuccess" class="d-flex justify-content-center min-vh-100 animate__animated wow animate__backInDown">
+  <div class="text-center position-relative" id="successMessage">
+    <a class="btn-close position-absolute top-0 end-0 mt-3 me-3" routerLink="/catalog"></a>
+    <h2 class="fw-bold p-5 mb-5">Спасибо за заказ!</h2>
+  </div>
+</div>

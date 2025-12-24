@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row justify-content-center pt-5">
+    <div class="col-12 text-center">
+      <h2 class="fw-bold">Наши чайные коллекции</h2>
+    </div>
+  </div>
+
+  <div class="cards py-5">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4 animate__animated wow animate__backInUp">
+      <div *ngFor="let product of products" class="col">
+        <div class="card h-100">
+          <div class="card-image">
+            <div class="card-image-flex">
+              <img alt="Россыпь чая" class="card-image__scattering" src="{{product.image}}">
+            </div>
+          </div>
+          <div class="card-body">
+            <span class="fs-5 fw-bold">{{ product.title }}</span>
+            <p
+              class="card-text  fw-normal lh-1.5 mt-3"> {{ (product.description | slice:0:30) + (product.description.length > 30 ? '...' : '') }}</p>
+            <button [routerLink]="['/product', product.id]" class="btn btn-sm btn-primary mb-2" type="button">
+              Подробнее
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,25 @@
+<div class="carousel pt-4 pb-4 animate__animated wow animate__jackInTheBox">
+  <div #carouselContainer
+       (mouseenter)="stopAutoPlay()"
+       (mouseleave)="startAutoPlay()"
+       class="carousel-container">
+
+    <div class="slides-wrapper">
+      <div *ngFor="let slide of slides; let i = index" [class.active]="i === currentSlide"
+           class="slide">
+        <img [alt]="slide.alt" [src]="slide.img" class="img-fluid">
+      </div>
+    </div>
+
+    <div class="navigations">
+      <img (click)="prevSlide()" alt="Previous" class="slick-prev" src="assets/images/prev_arrow.png">
+      <img (click)="nextSlide()" alt="Next" class="slick-next" src="assets/images/next_arrow.png">
+    </div>
+
+    <div class="dots">
+      <span (click)="goToSlide(i)" *ngFor="let slide of slides; let i = index"
+            [class.active]="i === currentSlide">●</span>
+    </div>
+
+  </div>
+</div>

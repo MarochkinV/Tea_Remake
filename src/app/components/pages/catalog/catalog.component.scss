@@ -1,0 +1,12 @@
+.card-image {
+  display: flex;
+  justify-content: center;
+  .card-image-flex {
+    max-width: 300px;
+    max-height: 100%;
+    .card-image__scattering {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+}
