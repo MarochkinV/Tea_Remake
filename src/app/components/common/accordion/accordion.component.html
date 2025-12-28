@@ -1,25 +1,14 @@
 <div class="col-12 col-lg-8 mx-auto pt-5 pb-5 animate__animated wow animate__bounceInRight">
-  <div class="accordion" id="teaAccordion">
-    <div *ngFor="let item of accordionItems; let i = index" class="accordion-item mb-3 border-0">
-      <h2 class="accordion-header">
-        <button
-          [attr.aria-controls]="'collapse' + i"
-          [attr.data-bs-target]="'#collapse' + i"
-          aria-expanded="false"
-          class="accordion-button bg-primary text-light fw-bold fs-6 rounded-2 p-3 collapsed custom-accordion-button"
-          data-bs-toggle="collapse"
-          type="button">
-          {{ item.question }}
-        </button>
-      </h2>
-
-      <div [attr.data-bs-parent]="'#teaAccordion'"
-           class="accordion-collapse collapse"
-           id="collapse{{i}}">
-        <div class="accordion-body border-0 pt-0">
-          <p class="mb-0 mt-3">{{ item.answer }}</p>
-        </div>
-      </div>
-    </div>
-  </div>
+  <ngb-accordion [closeOthers]="true">
+    <ngb-panel *ngFor="let item of accordionItems; let i = index" [id]="'panel-' + i">
+      <ng-template ngbPanelTitle>
+        {{ item.question }}
+      </ng-template>
+      <ng-template ngbPanelContent>
+        {{ item.answer }}
+      </ng-template>
+    </ngb-panel>
+  </ngb-accordion>
 </div>
+
+

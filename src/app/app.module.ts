@@ -15,7 +15,8 @@ import {HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
 import {registerLocaleData} from "@angular/common";
 import localeRu from '@angular/common/locales/ru';
-import { AccordionComponent } from './components/common/accordion/accordion.component';
+import {AccordionComponent} from './components/common/accordion/accordion.component';
+import {NgbModule,} from '@ng-bootstrap/ng-bootstrap';
 
 
 registerLocaleData(localeRu, 'ru');
@@ -38,7 +39,8 @@ registerLocaleData(localeRu, 'ru');
     HttpClientModule,
     AppRoutingModule,
     NgwWowModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
