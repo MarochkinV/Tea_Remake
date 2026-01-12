@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AccordionQuestion} from "../../../types/accordeon.question";
+import {AccordionQuestion} from "../../../../types/accordeon.question";
 
 @Component({
   selector: 'accordion',

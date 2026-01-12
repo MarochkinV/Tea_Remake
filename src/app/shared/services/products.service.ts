@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {ProductCard} from '../types/product.card';
-import {OrderData} from "../types/order.data";
+import {ProductCard} from '../../../types/product.card';
+import {OrderData} from "../../../types/order.data";
 
 export interface OrderResponse {
   success: number;

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {ProductCard} from "../../../types/product.card";
+import {ProductCard} from "../../../../types/product.card";
 import {HttpClient} from "@angular/common/http";
-import {ProductsService} from "../../../services/products.service";
+import {ProductsService} from "../../../shared/services/products.service";
 
 @Component({
   selector: 'catalog-component',

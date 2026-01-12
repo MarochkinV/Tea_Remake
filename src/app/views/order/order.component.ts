@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
-import {ProductsService} from '../../../services/products.service';
+import {ProductsService} from '../../shared/services/products.service';
 import {OrderData} from "../../../types/order.data";
 
 @Component({

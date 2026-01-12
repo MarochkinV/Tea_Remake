@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {ProductsService} from '../../../services/products.service';
-import {ProductCard} from '../../../types/product.card';
+import {ProductsService} from '../../../shared/services/products.service';
+import {ProductCard} from '../../../../types/product.card';
 import {finalize, tap} from 'rxjs/operators';
 
 @Component({
